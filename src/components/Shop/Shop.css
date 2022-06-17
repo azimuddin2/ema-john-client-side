@@ -1,0 +1,33 @@
+.container {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 100px 60px;
+}
+
+.cart-container {
+    background-color: #FFE0B3;
+}
+
+/* responsive tablet system*/
+@media screen and (min-width: 577px) and (max-width: 991px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* responsive mobile system */
+@media screen and (max-width: 576px) {
+    .products-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
