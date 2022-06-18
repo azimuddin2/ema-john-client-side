@@ -1,4 +1,4 @@
-.container {
+.shop-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
@@ -23,11 +23,11 @@
 
 /* responsive mobile system */
 @media screen and (max-width: 576px) {
-    .products-container{
+    .products-container {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .container {
+    .shop-container {
         grid-template-columns: 1fr;
     }
 }

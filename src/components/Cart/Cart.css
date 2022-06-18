@@ -1,0 +1,28 @@
+.cart {
+    position: sticky;
+    top: 0;
+}
+
+.cart-title{
+    text-align: center;
+    font-weight: 400;
+    color: #1C2B35;
+    font-size: 25px;
+    margin-top: 28px;
+    margin-bottom: 50px;
+}
+
+.cart-calculate {
+    margin-left: 23px;
+    color: #2A414F;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.005em;
+}
+
+.cart-calculate h4 {
+    font-size: 21px;
+    font-weight: 400;
+    color: #0E161A;
+}
