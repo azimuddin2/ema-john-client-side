@@ -8,6 +8,11 @@
     padding-right: 140px;
 }
 
+.menu {
+    display: flex;
+    align-items: center;
+}
+
 .header a {
     color: #ffffff;
     font-size: 16px;
