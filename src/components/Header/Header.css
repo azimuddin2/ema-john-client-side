@@ -22,7 +22,15 @@
 }
 
 .header a:hover {
-    color: #FF9900;
     transition: 0.5s;
+    cursor: pointer;
+}
+
+.button {
+    background-color: #FF9900;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
 }
