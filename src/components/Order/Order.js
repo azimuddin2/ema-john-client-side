@@ -3,22 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import useCart from '../../hooks/useCart';
-import useProducts from '../../hooks/useProducts';
 import { removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import './Order.css';
 
 const Order = () => {
-    const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
-    // console.log(cart)
+    const [cart, setCart] = useCart();
     const navigate = useNavigate();
 
     const handleRemoveProduct = product => {
-        const rest = cart.filter(pd => pd.id !== product.id);
+        const rest = cart.filter(pd => pd._id !== product._id);
         setCart(rest);
-        removeFromDb(product.id);
+        removeFromDb(product._id);
     }
 
     return (
@@ -26,7 +23,7 @@ const Order = () => {
             <div className='review-container'>
                 {
                     cart.map(product => <ReviewItem
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         handleRemoveProduct={handleRemoveProduct}
                     ></ReviewItem>)
