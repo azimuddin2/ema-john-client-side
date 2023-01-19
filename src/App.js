@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Checkout from './components/Checkout/Checkout';
-import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Inventory from './components/Inventory/Inventory';
 import Login from './components/Login/Login';
 import Order from './components/Order/Order';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import Header from './components/Shared/Header/Header';
 import Shop from './components/Shop/Shop';
 import SignUp from './components/SignUp/SignUp';
 
