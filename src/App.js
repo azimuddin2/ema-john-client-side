@@ -12,7 +12,7 @@ import SignUp from './components/SignUp/SignUp';
 
 function App() {
   return (
-    <div>
+    <div className='max-width'>
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>

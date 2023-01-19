@@ -30,7 +30,7 @@
 .button {
     background-color: #FF9900;
     color: white;
-    padding: 6px 14px;
+    padding: 6px 14px !important;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
