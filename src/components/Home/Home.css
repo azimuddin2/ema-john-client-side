@@ -1,0 +1,66 @@
+.banner-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    margin: 100px 120px;
+}
+
+.banner-image img {
+    width: 80%;
+    box-shadow: -16px 16px 0px 0px rgb(255 153 0 / 30%);
+    border-radius: 8px;
+}
+
+.banner-info{
+    padding: 130px 0px;
+}
+
+.sale-up {
+    color: #FF9900;
+    letter-spacing: 0.0015em;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.banner-tittle{
+    font-size: 46px;
+    color: #1C2B35;
+    margin-bottom: -10px;
+}
+
+.banner-detail{
+    color: #2A414F;
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
+.shop-btn{
+    background-color: #FF9900;
+    border: none;
+    color: #fff;
+    padding: 10px 24px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn-name{
+    margin-right: 6px;
+}
+
+.shop-btn:hover {
+    background-color: #1C2B35;
+}
+
+
+/* responsive tablet system*/
+@media screen and (min-width: 577px) and (max-width: 991px) {
+  
+}
+
+
+/* responsive mobile system */
+@media screen and (max-width: 576px) {
+    
+}

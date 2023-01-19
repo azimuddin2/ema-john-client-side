@@ -4,6 +4,7 @@ import './Cart.css';
 const Cart = (props) => {
     const { cart } = props;
     // console.log(cart);
+    
     /* products total calculator method...!!
         let total = 0;
         let shipping = 0;
