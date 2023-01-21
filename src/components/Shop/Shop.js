@@ -1,8 +1,11 @@
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-import { addToDb } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
@@ -45,7 +48,12 @@ const Shop = () => {
 
         setCart(newCart);
         addToDb(selectedProduct._id);
-    }
+    };
+
+    const handleDeleteFormCart = () => {
+        setCart([]);
+        deleteShoppingCart();
+    };
 
     return (
         <div className='shop-container'>
@@ -63,7 +71,7 @@ const Shop = () => {
                     {
                         [...Array(pageCount).keys()]
                             .map(number => <button
-                                className={page === number ? 'selected' : '' }
+                                className={page === number ? 'selected' : ''}
                                 onClick={() => setPage(number)}
                             >{number + 1}</button>)
                     }
@@ -80,10 +88,21 @@ const Shop = () => {
                 </div>
             </div>
             <div className='cart-container'>
-                <Cart cart={cart}>
+                <Cart cart={cart}
+                >
                     <Link to='/order'>
-                        <button>Review Order</button>
+                        <button className='order-btn'>
+                            <span className='order-text'>Review Order</span>
+                            <FontAwesomeIcon className='order-btn-icon' icon={faArrowRight}></FontAwesomeIcon>
+                        </button>
                     </Link>
+                    <button
+                        onClick={handleDeleteFormCart}
+                        className="delete-cart-btn"
+                    >
+                        <span className='clear-btn-text'>Clear Cart</span>
+                        <RiDeleteBin5Fill className='delete-btn-icon'></RiDeleteBin5Fill>
+                    </button>
                 </Cart>
             </div>
         </div>
