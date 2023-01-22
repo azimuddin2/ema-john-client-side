@@ -35,7 +35,6 @@
     font-weight: 400;
     color: #1C2B35;
     margin-bottom: 4px;
-    /* line-height: 12px; */
     letter-spacing: 0.0015em;
     margin-top: 0px;
 }
@@ -56,7 +55,27 @@
 
 .delete-icon {
     color: #EB5757;
-    /* font-size: 20px; */
     width: 25px;
     height: 25px;
+}
+
+
+/* responsive tablet device*/
+@media screen and (min-width: 577px) and (max-width: 991px) {
+    .review-item-container {
+         width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* responsive mobile device */
+@media screen and (max-width: 576px) { 
+
+    .review-item-container {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
 }

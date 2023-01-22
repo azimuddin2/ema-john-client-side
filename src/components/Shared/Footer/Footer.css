@@ -114,9 +114,14 @@
 
     .footer-info ul li {
         margin-bottom: 8px;
+        margin-left: -40px;
     }
 
     .social-icon {
-        margin-left: 40px;
+        text-align: center;
     }
+
+    .copy-right {
+        margin-top: 50px;
+    }    
 }

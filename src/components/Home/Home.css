@@ -1,4 +1,4 @@
-.banner-container{
+.banner-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 100px;
@@ -11,7 +11,7 @@
     border-radius: 8px;
 }
 
-.banner-info{
+.banner-info {
     padding: 130px 0px;
 }
 
@@ -22,19 +22,19 @@
     font-weight: 400;
 }
 
-.banner-tittle{
+.banner-tittle {
     font-size: 46px;
     color: #1C2B35;
     margin-bottom: -10px;
 }
 
-.banner-detail{
+.banner-detail {
     color: #2A414F;
     font-size: 19px;
     margin-bottom: 30px;
 }
 
-.shop-btn{
+.shop-btn {
     background-color: #FF9900;
     border: none;
     color: #fff;
@@ -45,7 +45,7 @@
     font-size: 14px;
 }
 
-.btn-name{
+.btn-name {
     margin-right: 6px;
 }
 
@@ -56,32 +56,50 @@
 
 /* responsive tablet device*/
 @media screen and (min-width: 577px) and (max-width: 991px) {
-  
+    .banner-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin: 80px 60px;
+    }
+    
+    .banner-image img {
+        width: 100%;
+    }
+    
+    .banner-info {
+        padding: 10px 0px;
+    }
 }
 
 
 /* responsive mobile device */
 @media screen and (max-width: 576px) {
-    .banner-container{
+    .banner-container {
         grid-template-columns: repeat(1, 1fr);
         gap: 0px;
-        margin: 60px 60px;
+        margin: 0px 40px;
+        margin-top: 80px;
         position: relative;
     }
-    
+
     .banner-image img {
         width: 100%;
     }
 
     .banner-image {
         position: relative;
-        bottom: 280px;
+        bottom: 470px;
         margin-top: 90px;
     }
-    
-    .banner-info{
+
+    .banner-info {
         padding: 0px 0px;
         position: relative;
-        top: 300px;
+        top: 450px;
+    }
+
+    .banner-tittle {
+        margin-top: 0;
     }
 }
