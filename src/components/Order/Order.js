@@ -1,4 +1,4 @@
-import { faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import useCart from '../../hooks/useCart';
 import { removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
+import shop from '../../images/shop.gif';
 import './Order.css';
 
 const Order = () => {
@@ -28,12 +29,22 @@ const Order = () => {
                         handleRemoveProduct={handleRemoveProduct}
                     ></ReviewItem>)
                 }
+                {
+                    cart.length === 0 && <div className='shop-image'>
+                        <img src={shop} alt="" />
+                    </div>
+                }
             </div>
             <div className='order-cart-container'>
                 <Cart cart={cart}>
-                    <button className='checkout-btn' onClick={() =>navigate('/checkout')}>
+                    <button className='shop-now-btn' onClick={() => navigate('/shop')}>
+                        <span className='btn-title'>Shop Now</span>
+                        <FontAwesomeIcon className='btn-icon' icon={faArrowRight}></FontAwesomeIcon>
+                    </button>
+
+                    <button className='checkout-btn' onClick={() => navigate('/checkout')}>
                         <span className='btn-title'>Proceed Checkout</span>
-                          <FontAwesomeIcon className='btn-icon' icon={faMoneyCheck}></FontAwesomeIcon>
+                        <FontAwesomeIcon className='btn-icon' icon={faMoneyCheck}></FontAwesomeIcon>
                     </button>
                 </Cart>
             </div>

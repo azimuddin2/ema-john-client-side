@@ -21,7 +21,7 @@ const Header = () => {
                 <CustomLink to="/">Home</CustomLink>
                 <CustomLink to="/shop">Shop</CustomLink>
                 <CustomLink to="/order">Order</CustomLink>
-                <CustomLink to="/inventory">Manage Inventory</CustomLink>
+                <CustomLink to="/inventory">Inventory</CustomLink>
                 {
                     user ?
                         <button onClick={handleSignOut} className='button'>Logout</button>

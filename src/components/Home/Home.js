@@ -2,7 +2,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import image from '../../images/banner.png';
+import banner from '../../images/banner.png';
 import './Home.css';
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
                 </Link>
             </div>
             <div className='banner-image'>
-                <img src={image} alt="Banner" />
+                <img src={banner} alt="Banner" />
             </div>
         </section>
     );
