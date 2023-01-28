@@ -5,10 +5,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
-import auth from '../../../firebase.init';
 import logo from '../../../images/Logo.svg';
-import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
+import CustomLink from '../CustomLink/CustomLink';
+import auth from '../../../firebase.init';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
