@@ -40,9 +40,65 @@
     cursor: pointer;
 }
 
-#mobile{
+#mobile {
     display: none;
-} 
+}
+
+
+/* responsive tablet device*/
+@media screen and (min-width: 577px) and (max-width: 991px) {
+    .header {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    #navbar {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        top: 68px;
+        right: -350px;
+        width: 650px;
+        height: 210px;
+        border-radius: 10px;
+        background-color: #2a3239;
+        box-shadow: 0 40px 60px rgb(0 0 0 / 10%);
+        padding: 36px 24px 36px 24px;
+        transition: 0.10s ease-in-out;
+    }
+
+    #navbar.active {
+        right: 36px;
+        display: block;
+        opacity: 1;
+        z-index: 1;
+    }
+
+    #navbar li {
+        margin-bottom: 20px;
+    }
+
+    #mobile {
+        display: block;
+    }
+
+    .fa-bars {
+        color: #fff;
+        font-size: 24px;
+    }
+
+    .button {
+        background-color: #FF9900;
+        color: white;
+        padding: 6px 60px !important;
+        border-radius: 5px;
+        font-size: 18px !important;
+        cursor: pointer;
+        border: none;
+    }
+}
 
 
 /* responsive mobile device */
@@ -57,34 +113,45 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        position:absolute;
-        top: 64px;
+        position: absolute;
+        top: 68px;
         right: -350px;
-        width: 300px;
-        height: 300px;
-        /* background-color: #2A414F; */
+        width: 280px;
+        height: 210px;
+        border-radius: 10px;
         background-color: #2a3239;
-        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-        padding: 40px  0 0 20px;
+        box-shadow: 0 40px 60px rgb(0 0 0 / 10%);
+        padding: 36px 24px 36px 24px;
         transition: 0.10s ease-in-out;
     }
 
-    #navbar.active{
-        right: 0px;
+    #navbar.active {
+        right: 24px;
         display: block;
+        opacity: 1;
+        z-index: 1;
     }
 
     #navbar li {
-       margin-bottom: 24px;
-       text-align: center;
+        margin-bottom: 20px;
     }
 
-    #mobile{
+    #mobile {
         display: block;
-    } 
+    }
 
     .fa-bars {
         color: #fff;
         font-size: 24px;
+    }
+
+    .button {
+        background-color: #FF9900;
+        color: white;
+        padding: 6px 120px !important;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
     }
 }
