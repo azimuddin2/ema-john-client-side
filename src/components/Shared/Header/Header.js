@@ -1,22 +1,14 @@
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import logo from '../../../images/Logo.svg';
 import './Header.css';
 import CustomLink from '../CustomLink/CustomLink';
-import auth from '../../../firebase.init';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const [user] = useAuthState(auth);
-
-    const handleSignOut = () => {
-        signOut(auth);
-    }
 
     return (
         <>
@@ -36,12 +28,12 @@ const Header = () => {
                         <li>
                             <CustomLink to="/inventory">Inventory</CustomLink>
                         </li>
-                        {
+                        {/* {
                             user ?
                                 <button onClick={handleSignOut} className='button'>Logout</button>
                                 :
                                 <Link className='button' to="/login">Login</Link>
-                        }
+                        } */}
                     </ul>
                 </div>
                 <div id='mobile' onClick={() => setOpen(!open)}>
