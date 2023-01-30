@@ -4,10 +4,10 @@ import Home from "../components/Home/Home";
 import Inventory from "../components/Inventory/Inventory";
 import Login from "../components/Login/Login";
 import Order from "../components/Order/Order";
-import RequireAuth from "../components/RequireAuth/RequireAuth";
 import Shop from "../components/Shop/Shop";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../layout/Main/Main";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -32,9 +32,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'checkout',
-                element: <RequireAuth>
+                element: <PrivateRoute>
                     <Checkout></Checkout>
-                </RequireAuth>
+                </PrivateRoute>
             }
         ],
     },

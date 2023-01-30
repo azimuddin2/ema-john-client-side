@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 import logo from '../../../images/Logo.svg';
 import './Header.css';
 import CustomLink from '../CustomLink/CustomLink';
+import { useContext } from 'react';
+import { AuthContext } from '../../../contexts/UserContext';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
 
     return (
         <>
@@ -28,12 +31,12 @@ const Header = () => {
                         <li>
                             <CustomLink to="/inventory">Inventory</CustomLink>
                         </li>
-                        {/* {
-                            user ?
-                                <button onClick={handleSignOut} className='button'>Logout</button>
+                        {
+                            user?.uid ?
+                                <button onClick={logOut} className='button'>Logout</button>
                                 :
                                 <Link className='button' to="/login">Login</Link>
-                        } */}
+                        }
                     </ul>
                 </div>
                 <div id='mobile' onClick={() => setOpen(!open)}>
