@@ -61,7 +61,7 @@
         position: absolute;
         top: 68px;
         right: -350px;
-        width: 650px;
+        width: 580px;
         height: 210px;
         border-radius: 10px;
         background-color: #2a3239;
@@ -71,7 +71,7 @@
     }
 
     #navbar.active {
-        right: 36px;
+        right: 52px;
         display: block;
         opacity: 1;
         z-index: 1;
@@ -127,7 +127,7 @@
     }
 
     #navbar.active {
-        right: 24px;
+        right: 16px;
         display: block;
         opacity: 1;
         z-index: 1;

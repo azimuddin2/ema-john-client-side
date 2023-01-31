@@ -78,7 +78,7 @@
     .banner-container {
         grid-template-columns: repeat(1, 1fr);
         gap: 0px;
-        margin: 0px 40px;
+        margin: -70px 40px;
         margin-top: 80px;
         position: relative;
     }
@@ -89,8 +89,8 @@
 
     .banner-image {
         position: relative;
-        bottom: 470px;
-        margin-top: 90px;
+        bottom: 430px;
+        margin-top: 145px;
     }
 
     .banner-info {
@@ -101,5 +101,6 @@
 
     .banner-tittle {
         margin-top: 0;
+        font-size: 36px;
     }
 }
