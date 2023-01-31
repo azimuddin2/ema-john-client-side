@@ -7,6 +7,7 @@ import { AuthContext } from '../../contexts/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                console.error(error);
+                toast.error(error.message);
             })
     };
 
@@ -62,7 +63,6 @@ const Login = () => {
                             }
                         </p>
                     </div>
-                    {/* <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p> */}
                     <input className='form-submit' type="submit" value="Login" />
                 </form>
                 <p className='form-link-title'>New to Ema-john? <Link className='form-link' to={'/signup'}>Create New Account</Link></p>

@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/logo.png';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -12,6 +13,9 @@ const SignUp = () => {
     const [error, setError] = useState(null);
     const { createUser } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/shop';
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,9 +24,18 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
 
-        if (password.length < 6) {
+        // validate password
+        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setError('Please provide at least two uppercase latter');
+            return;
+        }
+        else if (password.length < 6) {
             setError('Password should be 6 characters or more.!');
             return;
+        }
+        else if (!/(?=.*[!@#$&*])/.test(password)) {
+            setError('Please add at least one special character');
+            return
         }
         else if (password !== confirm) {
             setError('Your Password did not match.!');
@@ -34,9 +47,12 @@ const SignUp = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                toast.success('SignUp Successful')
+                navigate(from, { replace: true });
             })
             .catch((error) => {
-                console.error(error);
+                setError(error.message);
+                toast.error(error.message)
             })
     };
 
