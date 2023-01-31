@@ -1,13 +1,17 @@
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/logo.png';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const [error, setError] = useState(null);
     const { createUser } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -52,16 +56,39 @@ const SignUp = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" required />
+                        <input type={showPassword ? "text" : "password"} name="password" required />
+                        <p
+                            className='show-password'
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {
+                                showPassword ?
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEyeSlash}></FontAwesomeIcon>
+                                    :
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEye}></FontAwesomeIcon>
+                            }
+                        </p>
                     </div>
                     <div className="input-group">
                         <label htmlFor="confirm-password">Confirm Password</label>
-                        <input type="password" name="confirm" required />
+                        <input type={showPassword ? "text" : "password"} name="confirm" required />
+                        <p
+                            className='show-password'
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {
+                                showPassword ?
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEyeSlash}></FontAwesomeIcon>
+                                    :
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEye}></FontAwesomeIcon>
+                            }
+                        </p>
                     </div>
                     <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>
                     <input className='form-submit' type="submit" value="Sign Up" />
                 </form>
                 <p className='form-link-title'>Already have an account? <Link className='form-link' to={'/login'}>Login</Link></p>
+                <SocialLogin></SocialLogin>
             </div>
         </section>
     );

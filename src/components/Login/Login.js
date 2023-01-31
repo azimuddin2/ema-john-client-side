@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/shop';
@@ -27,7 +31,7 @@ const Login = () => {
             .catch((error) => {
                 console.error(error);
             })
-    }
+    };
 
     return (
         <section className='container'>
@@ -45,12 +49,24 @@ const Login = () => {
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" required />
+                        <input type={showPassword ? "text" : "password"} name="password" required />
+                        <p
+                            className='show-password'
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {
+                                showPassword ?
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEyeSlash}></FontAwesomeIcon>
+                                    :
+                                    <FontAwesomeIcon className='text-gray-400' icon={faEye}></FontAwesomeIcon>
+                            }
+                        </p>
                     </div>
                     {/* <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p> */}
                     <input className='form-submit' type="submit" value="Login" />
                 </form>
                 <p className='form-link-title'>New to Ema-john? <Link className='form-link' to={'/signup'}>Create New Account</Link></p>
+                <SocialLogin></SocialLogin>
             </div>
         </section>
     );
