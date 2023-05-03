@@ -16,7 +16,9 @@ const Header = () => {
     return (
         <>
             <nav className='header'>
-                <img src={logo} alt="" />
+                <Link to='/'>
+                    <img src={logo} alt="" />
+                </Link>
                 <div>
                     <ul id='navbar' className={open ? '#navbar active' : '#navbar'}>
                         <li>
@@ -27,9 +29,6 @@ const Header = () => {
                         </li>
                         <li>
                             <CustomLink to="/order">Order</CustomLink>
-                        </li>
-                        <li>
-                            <CustomLink to="/inventory">Inventory</CustomLink>
                         </li>
                         {
                             user?.uid ?

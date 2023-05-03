@@ -1,15 +1,58 @@
-.checkout-form{
-    margin: 50px 0px;
+.checkout-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0px 80px;
+}
+
+.checkout-form {
+    width: 500px;
+    border: 1px solid #95A0A7;
+    border-radius: 8px;
+    margin: 60px auto;
+    padding-top: 40px;
+    box-shadow: -12px 13px 0px 0px rgb(255 153 0 / 30%);
+    padding-bottom: 36px;
 }
 
 .input-group select {
     display: block;
-    width: 415px;
+    width: 436px;
     height: 50px;
     border: 1px solid #95A0A7;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 16px;
     padding: 0px 10px;
     margin: auto;
     margin-top: 9px;
+}
+
+.payment {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+/* responsive mobile device */
+@media screen and (max-width: 576px) {
+    .checkout-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0px;
+    }
+
+    .checkout-form {
+        box-shadow: none;
+        width: 90%;
+        margin-bottom: 60px;
+        margin-top: 0px;
+        padding-bottom: 20px;
+    }
+
+    .input-group select {
+        width: 90%;
+    }
+
+    .payment-img {
+        width: 100%;
+    }
 }

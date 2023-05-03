@@ -41,11 +41,15 @@ const Order = () => {
                         <span className='btn-title'>Shop Now</span>
                         <FontAwesomeIcon className='btn-icon' icon={faArrowRight}></FontAwesomeIcon>
                     </button>
-
-                    <button className='checkout-btn' onClick={() => navigate('/checkout')}>
-                        <span className='btn-title'>Proceed Checkout</span>
-                        <FontAwesomeIcon className='btn-icon' icon={faMoneyCheck}></FontAwesomeIcon>
-                    </button>
+                    {
+                        cart.length > 0 && <button
+                            className='checkout-btn'
+                            onClick={() => navigate('/checkout')}
+                        >
+                            <span className='btn-title'>Proceed Checkout</span>
+                            <FontAwesomeIcon className='btn-icon' icon={faMoneyCheck}></FontAwesomeIcon>
+                        </button>
+                    }
                 </Cart>
             </div>
         </div>
