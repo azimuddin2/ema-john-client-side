@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../components/Checkout/Checkout";
 import Home from "../components/Home/Home";
-import Inventory from "../components/Inventory/Inventory";
 import Login from "../components/Login/Login";
 import Order from "../components/Order/Order";
 import Shop from "../components/Shop/Shop";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../layout/Main/Main";
 import PrivateRoute from "./PrivateRoute";
+import PaymentSuccess from "../components/Payment/PaymentSuccess";
+import PaymentFail from "../components/Payment/PaymentFail";
 
 const router = createBrowserRouter([
     {
@@ -27,16 +28,18 @@ const router = createBrowserRouter([
                 element: <Order></Order>
             },
             {
-                path: 'inventory',
-                element: <PrivateRoute>
-                    <Inventory></Inventory>
-                </PrivateRoute>
-            },
-            {
                 path: 'checkout',
                 element: <PrivateRoute>
                     <Checkout></Checkout>
                 </PrivateRoute>
+            },
+            {
+                path: '/payment/success',
+                element: <PaymentSuccess></PaymentSuccess>
+            },
+            {
+                path: '/payment/fail',
+                element: <PaymentFail></PaymentFail>
             }
         ],
     },

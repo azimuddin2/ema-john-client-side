@@ -2,9 +2,22 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/UserContext';
 import payment from '../../images/payment.gif';
 import './Checkout.css';
+import useCart from '../../hooks/useCart';
 
 const Checkout = () => {
     const { user } = useContext(AuthContext);
+    const [cart] = useCart();
+
+    let total = 0;
+    let shipping = 0;
+    let quantity = 0;
+    for (const product of cart) {
+        quantity = quantity + product.quantity;
+        total = total + product.price * product.quantity;
+        shipping = shipping + product.shipping;
+    }
+    const tax = parseFloat((total * 0.1).toFixed(2));
+    const grandTotal = total + shipping + tax;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,20 +31,33 @@ const Checkout = () => {
         const address = form.address.value;
 
         const checkoutInfo = {
+            productPrice: grandTotal,
             name,
             phone,
             email,
             currency,
             postCode,
             address
-        }
-        console.log(checkoutInfo);
-    }
+        };
+
+        fetch('http://localhost:5000/order', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(checkoutInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                window.location.replace(data.url);
+            })
+            .catch(error => console.log(error));
+    };
 
     return (
         <section className='checkout-container'>
             <div className='payment'>
-                <img src={payment} alt="" className='payment-img'/>
+                <img src={payment} alt="Payment" className='payment-img' />
             </div>
             <div className='checkout-form'>
                 <form onSubmit={handleSubmit}>
@@ -43,7 +69,6 @@ const Checkout = () => {
                             required
                         />
                     </div>
-
                     <div className="input-group">
                         <input
                             type="text"
@@ -52,7 +77,6 @@ const Checkout = () => {
                             required
                         />
                     </div>
-
                     <div className="input-group">
                         <input
                             type="email"
@@ -60,7 +84,6 @@ const Checkout = () => {
                             disabled
                         />
                     </div>
-
                     <div className='input-group'>
                         <select
                             defaultValue='BDT'
@@ -71,7 +94,6 @@ const Checkout = () => {
                             <option value="USD">USD</option>
                         </select>
                     </div>
-
                     <div className="input-group">
                         <input
                             type="text"
@@ -80,7 +102,6 @@ const Checkout = () => {
                             required
                         />
                     </div>
-
                     <div className="input-group">
                         <input
                             type="text"

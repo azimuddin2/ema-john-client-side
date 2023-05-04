@@ -1,0 +1,41 @@
+.payment-success{
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.success-icon{
+    color: rgba(0, 128, 0, 0.808);
+    font-size: 100px;
+    margin-bottom: 0px;
+}
+
+.congratulations{
+    margin: 0px;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.payment-fail{
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.error {
+    margin: 0px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.fail-icon{
+    color: red;
+    font-size: 100px;
+    margin: auto;
+}
+
+.pay-again{
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
