@@ -8,8 +8,10 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/logo.png';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+    useTitle('Signup')
     const [error, setError] = useState(null);
     const { createUser } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);

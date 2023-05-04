@@ -3,8 +3,10 @@ import { AuthContext } from '../../contexts/UserContext';
 import payment from '../../images/payment.gif';
 import './Checkout.css';
 import useCart from '../../hooks/useCart';
+import useTitle from '../../hooks/useTitle';
 
 const Checkout = () => {
+    useTitle('Checkout');
     const { user } = useContext(AuthContext);
     const [cart] = useCart();
 

@@ -4,8 +4,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import banner from '../../images/banner.png';
 import './Home.css';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home');
     return (
         <section className='banner-container'>
             <div className='banner-info'>

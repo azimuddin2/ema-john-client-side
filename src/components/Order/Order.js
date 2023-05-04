@@ -8,8 +8,10 @@ import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import shop from '../../images/shop.gif';
 import './Order.css';
+import useTitle from '../../hooks/useTitle';
 
 const Order = () => {
+    useTitle('Order')
     const [cart, setCart] = useCart();
     const navigate = useNavigate();
 
