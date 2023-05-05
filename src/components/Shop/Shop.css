@@ -120,7 +120,7 @@
     .products-container {
         grid-template-columns: repeat(1, 1fr);
         gap: 30px;
-        margin: 100px 36px;
+        margin: 60px 28px;
         margin-bottom: 40px;
     }
 

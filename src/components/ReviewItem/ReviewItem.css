@@ -63,7 +63,7 @@
 /* responsive tablet device*/
 @media screen and (min-width: 577px) and (max-width: 991px) {
     .review-item-container {
-         width: 80%;
+        width: 80%;
         margin: auto;
         margin-bottom: 20px;
     }
@@ -71,11 +71,12 @@
 
 
 /* responsive mobile device */
-@media screen and (max-width: 576px) { 
+@media screen and (max-width: 576px) {
 
     .review-item-container {
         width: 90%;
         margin: auto;
         margin-bottom: 20px;
+        padding: 10px 0px;
     }
 }

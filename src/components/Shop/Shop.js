@@ -40,6 +40,10 @@ const Shop = () => {
             .catch(error => console.error(error))
     }, []);
 
+    if(!products){
+        return <p>Loading...</p>
+    }
+
     const handleAddToCart = (selectedProduct) => {
         let newCart = [];
         const exists = cart.find(product => product._id === selectedProduct._id);
