@@ -10,6 +10,7 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const Shop = () => {
     useTitle('Shop');
@@ -20,19 +21,23 @@ const Shop = () => {
     const [size, setSize] = useState(6);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product?page=${page}&size=${size}`)
+        fetch(`https://ema-john-server-mauve.vercel.app/product?page=${page}&size=${size}`)
             .then(res => res.json())
-            .then(data => setProducts(data));
+            .then(data => setProducts(data))
+            .catch(error => {
+                console.error(error);
+            })
     }, [page, size]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/productCount')
+        fetch('https://ema-john-server-mauve.vercel.app/productCount')
             .then(res => res.json())
             .then(data => {
                 const count = data.count;
                 const pages = Math.ceil(count / 10);
                 setPageCount(pages);
             })
+            .catch(error => console.error(error))
     }, []);
 
     const handleAddToCart = (selectedProduct) => {
@@ -49,6 +54,7 @@ const Shop = () => {
         }
 
         setCart(newCart);
+        toast.success('Added successfully');
         addToDb(selectedProduct._id);
     };
 

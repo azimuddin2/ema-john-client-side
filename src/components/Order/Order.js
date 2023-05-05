@@ -9,6 +9,7 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import shop from '../../images/shop.gif';
 import './Order.css';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const Order = () => {
     useTitle('Order')
@@ -19,6 +20,7 @@ const Order = () => {
         const rest = cart.filter(pd => pd._id !== product._id);
         setCart(rest);
         removeFromDb(product._id);
+        toast.success('Deleted successfully');
     }
 
     return (
