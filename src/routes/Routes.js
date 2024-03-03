@@ -21,7 +21,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'shop',
-                element: <Shop></Shop>
+                element: <Shop></Shop>,
+                loader: async () => {
+                    return fetch('https://ema-john-server-mauve.vercel.app/productCount')
+                }
             },
             {
                 path: 'order',

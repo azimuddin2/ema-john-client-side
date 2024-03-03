@@ -2,8 +2,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import { addToDb, deleteShoppingCart } from '../../utilities/fakedb';
 import './Shop.css';
@@ -16,30 +15,27 @@ import Cart from '../../components/Cart/Cart';
 const Shop = () => {
     useTitle('Shop');
     const [cart, setCart] = useCart();
-    const [pageCount, setPageCount] = useState(0);
+    const { productCount } = useLoaderData();
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(6);
+    const [size, setSize] = useState(9);
 
+    const totalPages = Math.ceil(productCount / size);
+    const pageNumbers = [...Array(totalPages).keys()];
+
+    const options = [3, 4, 5, 6, 7, 8, 9, 12];
+    const handleSelectChange = (event) => {
+        setSize(parseInt(event.target.value));
+        setPage(0);
+    };
 
     const { data: products = [], isLoading, error } = useQuery({
         queryKey: ['product', page, size],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/product?page=${page}&size=${size}`)
+            const res = await fetch(`https://ema-john-server-mauve.vercel.app/product?page=${page}&size=${size}`)
             const data = await res.json()
             return data;
         }
     })
-
-    useEffect(() => {
-        fetch('http://localhost:5000/productCount')
-            .then(res => res.json())
-            .then(data => {
-                const count = data.count;
-                const pages = Math.ceil(count / 10);
-                setPageCount(pages);
-            })
-            .catch(error => console.error(error))
-    }, []);
 
     const handleAddToCart = (selectedProduct) => {
         let newCart = [];
@@ -68,7 +64,7 @@ const Shop = () => {
         return <p>Loading...</p>
     }
 
-    if(error){
+    if (error) {
         return <p>{error.message}</p>
     }
 
@@ -86,21 +82,22 @@ const Shop = () => {
                 </div>
                 <div className='pagination'>
                     {
-                        [...Array(pageCount).keys()]
-                            .map(number => <button
-                                className={page === number ? 'selected' : ''}
-                                onClick={() => setPage(number)}
-                            >{number + 1}</button>)
+                        pageNumbers.map(number => <button
+                            onClick={() => setPage(number)}
+                            className={page === number ? 'selected' : ''}
+                            key={number}
+                        >{number + 1}</button>)
                     }
-                    <select onChange={e => setSize(e.target.value)}>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="12">12</option>
+                    <select
+                        value={size}
+                        onChange={handleSelectChange}
+                    >
+                        {
+                            options.map(option => <option
+                                key={option}
+                                value={option}
+                            >{option}</option>)
+                        }
                     </select>
                 </div>
             </div>

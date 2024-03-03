@@ -42,7 +42,7 @@ const Checkout = () => {
             address
         };
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://ema-john-server-mauve.vercel.app/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

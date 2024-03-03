@@ -12,7 +12,7 @@ const PaymentSuccess = () => {
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/order/by-transaction-id/${transactionId}`)
+        fetch(`https://ema-john-server-mauve.vercel.app/order/by-transaction-id/${transactionId}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [transactionId])
