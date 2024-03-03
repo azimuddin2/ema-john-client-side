@@ -24,14 +24,14 @@ const Shop = () => {
     const { data: products = [], isLoading, error } = useQuery({
         queryKey: ['product', page, size],
         queryFn: async () => {
-            const res = await fetch(`https://ema-john-server-mauve.vercel.app/product?page=${page}&size=${size}`)
+            const res = await fetch(`http://localhost:5000/product?page=${page}&size=${size}`)
             const data = await res.json()
             return data;
         }
     })
 
     useEffect(() => {
-        fetch('https://ema-john-server-mauve.vercel.app/productCount')
+        fetch('http://localhost:5000/productCount')
             .then(res => res.json())
             .then(data => {
                 const count = data.count;

@@ -11,7 +11,7 @@ const useCart = () => {
         const keys = Object.keys(storedCart);
         console.log(keys);
         
-        fetch('https://ema-john-server-mauve.vercel.app/productByKeys', {
+        fetch('http://localhost:5000/productByKeys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
