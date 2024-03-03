@@ -6,12 +6,12 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import { addToDb, deleteShoppingCart } from '../../utilities/fakedb';
-import Cart from '../Cart/Cart';
-import Product from '../Product/Product';
 import './Shop.css';
-import useTitle from '../../hooks/useTitle';
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
+import useTitle from '../../hooks/useTitle';
+import Product from '../../components/Product/Product';
+import Cart from '../../components/Cart/Cart';
 
 const Shop = () => {
     useTitle('Shop');

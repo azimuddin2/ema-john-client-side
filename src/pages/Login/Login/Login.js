@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css';
-import logo from '../../images/logo.png';
+import logo from '../../../images/logo.png';
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/UserContext';
+import { AuthContext } from '../../../contexts/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast } from 'react-toastify';
-import useTitle from '../../hooks/useTitle';
+import useTitle from '../../../hooks/useTitle';
 
 const Login = () => {
     useTitle('Login');

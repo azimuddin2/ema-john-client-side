@@ -1,8 +1,8 @@
 import React from 'react';
 import './SocialLogin.css';
-import google from '../../images/google.png';
+import google from '../../../images/google.png';
 import { useContext } from 'react';
-import { AuthContext } from '../../contexts/UserContext';
+import { AuthContext } from '../../../contexts/UserContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 

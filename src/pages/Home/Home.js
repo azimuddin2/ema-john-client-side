@@ -8,6 +8,7 @@ import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
     useTitle('Home');
+    
     return (
         <section className='banner-container'>
             <div className='banner-info'>

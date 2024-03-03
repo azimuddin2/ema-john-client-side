@@ -4,12 +4,12 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import useCart from '../../hooks/useCart';
 import { removeFromDb } from '../../utilities/fakedb';
-import Cart from '../Cart/Cart';
-import ReviewItem from '../ReviewItem/ReviewItem';
 import shop from '../../images/shop.gif';
 import './Order.css';
-import useTitle from '../../hooks/useTitle';
 import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
+import ReviewItem from '../../components/ReviewItem/ReviewItem';
+import Cart from '../../components/Cart/Cart';
 
 const Order = () => {
     useTitle('Order')

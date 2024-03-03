@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Checkout from "../components/Checkout/Checkout";
 import Home from "../pages/Home/Home";
-import Login from "../components/Login/Login";
-import Order from "../components/Order/Order";
-import Shop from "../components/Shop/Shop";
-import SignUp from "../components/SignUp/SignUp";
-import PrivateRoute from "./PrivateRoute";
+import Shop from "../pages/Shop/Shop";
+import Order from "../pages/Order/Order";
+import Checkout from "../pages/Checkout/Checkout";
 import PaymentSuccess from "../pages/Payment/PaymentSuccess";
 import PaymentFail from "../pages/Payment/PaymentFail";
+import Login from "../pages/Login/Login/Login";
+import SignUp from "../pages/Login/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {

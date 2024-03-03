@@ -5,10 +5,10 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../contexts/UserContext';
-import logo from '../../images/logo.png';
+import { AuthContext } from '../../../contexts/UserContext';
+import logo from '../../../images/logo.png';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import useTitle from '../../hooks/useTitle';
+import useTitle from '../../../hooks/useTitle';
 
 const SignUp = () => {
     useTitle('Signup')
