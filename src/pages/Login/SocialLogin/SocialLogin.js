@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/UserContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
@@ -12,8 +13,10 @@ const SocialLogin = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/shop';
 
+    const googleProvider = new GoogleAuthProvider();
+    
     const handleSignInWithGoogle = () => {
-        signInWithGoogle()
+        signInWithGoogle(googleProvider)
         .then((result) => {
             const user = result.user;
             console.log(user);
@@ -22,7 +25,7 @@ const SocialLogin = () => {
         .catch((error) => {
             toast.error(error.message);
         })
-    }
+    };
 
     return (
         <div className='social-login-container'>

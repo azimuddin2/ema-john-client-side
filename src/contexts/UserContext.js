@@ -2,7 +2,6 @@ import React, { createContext } from 'react';
 import {
     createUserWithEmailAndPassword,
     getAuth,
-    GoogleAuthProvider,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
@@ -19,9 +18,8 @@ const UserContext = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const googleProvider = new GoogleAuthProvider();
-
-    const signInWithGoogle = () => {
+    
+    const signInWithGoogle = (googleProvider) => {
         return signInWithPopup(auth, googleProvider);
     }
 
