@@ -10,18 +10,30 @@ import { toast } from 'react-toastify';
 import useTitle from '../../hooks/useTitle';
 import ReviewItem from '../../components/ReviewItem/ReviewItem';
 import Cart from '../../components/Cart/Cart';
+import swal from 'sweetalert';
 
 const Order = () => {
     useTitle('Order')
     const [cart, setCart] = useCart();
     const navigate = useNavigate();
 
-    const handleRemoveProduct = product => {
-        const rest = cart.filter(pd => pd._id !== product._id);
-        setCart(rest);
-        removeFromDb(product._id);
-        toast.success('Deleted successfully');
-    }
+    const handleRemoveProduct = (product) => {
+        swal({
+            title: "Are you sure?",
+            text: "Product delete form cart!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const rest = cart.filter(pd => pd._id !== product._id);
+                    setCart(rest);
+                    removeFromDb(product._id);
+                    toast.success('Product deleted successfully');
+                }
+            });
+    };
 
     return (
         <div className='order-container'>

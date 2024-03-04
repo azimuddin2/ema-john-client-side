@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin: 100px 60px;
+    margin: 100px 80px;
     margin-bottom: 40px;
 }
 
@@ -34,6 +34,10 @@
     cursor: pointer;
 }
 
+.select-option{
+    font-size: 16px;
+}
+
 .order-btn {
     width: 232px;
     background-color: #FF9900;
@@ -56,7 +60,7 @@
 }
 
 .order-btn-icon {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .delete-cart-btn {

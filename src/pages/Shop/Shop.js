@@ -13,6 +13,7 @@ import Product from '../../components/Product/Product';
 import Cart from '../../components/Cart/Cart';
 import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
 import Loading from '../Shared/Loading/Loading';
+import swal from 'sweetalert';
 
 const Shop = () => {
     useTitle('Shop');
@@ -53,13 +54,27 @@ const Shop = () => {
         }
 
         setCart(newCart);
-        toast.success('Added successfully');
+        toast.success('Cart product added successfully');
         addToDb(selectedProduct._id);
     };
 
     const handleDeleteFormCart = () => {
-        setCart([]);
-        deleteShoppingCart();
+        swal({
+            title: "Are you sure?",
+            text: "All products delete form cart!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    setCart([]);
+                    deleteShoppingCart();
+                    swal("Product deleted successfully.", {
+                        icon: "success",
+                    });
+                }
+            });
     };
 
     if (isLoading) {
@@ -93,6 +108,7 @@ const Shop = () => {
                     <select
                         value={size}
                         onChange={handleSelectChange}
+                        className='select-option'
                     >
                         {
                             options.map(option => <option
