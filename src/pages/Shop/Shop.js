@@ -11,6 +11,8 @@ import { useQuery } from '@tanstack/react-query';
 import useTitle from '../../hooks/useTitle';
 import Product from '../../components/Product/Product';
 import Cart from '../../components/Cart/Cart';
+import ErrorMessage from '../Shared/ErrorMessage/ErrorMessage';
+import Loading from '../Shared/Loading/Loading';
 
 const Shop = () => {
     useTitle('Shop');
@@ -61,11 +63,11 @@ const Shop = () => {
     };
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
     }
 
     if (error) {
-        return <p>{error.message}</p>
+        return <ErrorMessage message={error.message}></ErrorMessage>
     }
 
     return (
