@@ -11,23 +11,24 @@ import Product from '../Product/Product';
 import './Shop.css';
 import useTitle from '../../hooks/useTitle';
 import { toast } from 'react-toastify';
+import { useQuery } from '@tanstack/react-query';
 
 const Shop = () => {
     useTitle('Shop');
-    const [products, setProducts] = useState([]);
     const [cart, setCart] = useCart();
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
 
-    useEffect(() => {
-        fetch(`https://ema-john-server-mauve.vercel.app/product?page=${page}&size=${size}`)
-            .then(res => res.json())
-            .then(data => setProducts(data))
-            .catch(error => {
-                console.error(error);
-            })
-    }, [page, size]);
+
+    const { data: products = [], isLoading, error } = useQuery({
+        queryKey: ['product', page, size],
+        queryFn: async () => {
+            const res = await fetch(`https://ema-john-server-mauve.vercel.app/product?page=${page}&size=${size}`)
+            const data = await res.json()
+            return data;
+        }
+    })
 
     useEffect(() => {
         fetch('https://ema-john-server-mauve.vercel.app/productCount')
@@ -39,10 +40,6 @@ const Shop = () => {
             })
             .catch(error => console.error(error))
     }, []);
-
-    if(!products){
-        return <p>Loading...</p>
-    }
 
     const handleAddToCart = (selectedProduct) => {
         let newCart = [];
@@ -67,12 +64,20 @@ const Shop = () => {
         deleteShoppingCart();
     };
 
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
+
+    if(error){
+        return <p>{error.message}</p>
+    }
+
     return (
         <div className='shop-container'>
             <div >
                 <div className='products-container'>
                     {
-                        products.map(product => <Product
+                        products?.map(product => <Product
                             key={product._id}
                             product={product}
                             handleAddToCart={handleAddToCart}
