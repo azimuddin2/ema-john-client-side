@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className='copy-right'><small>Copyright © 2023 All Rights Reserved</small></p>
+      <p className='copy-right'><small>Copyright © 2024 Ema John</small></p>
     </footer>
   );
 };

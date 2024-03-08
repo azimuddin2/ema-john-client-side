@@ -8,16 +8,25 @@ import './Header.css';
 import CustomLink from '../CustomLink/CustomLink';
 import { useContext } from 'react';
 import { AuthContext } from '../../../contexts/UserContext';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const [open, setOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    };
+
     return (
         <>
             <nav className='header'>
                 <Link to='/'>
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="Logo" />
                 </Link>
                 <div>
                     <ul id='navbar' className={open ? '#navbar active' : '#navbar'}>
@@ -32,9 +41,18 @@ const Header = () => {
                         </li>
                         {
                             user?.uid ?
-                                <button onClick={logOut} className='button'>Logout</button>
+                                (
+                                    <button
+                                        onClick={handleLogout}
+                                        className='button'
+                                    >
+                                        Logout
+                                    </button>
+                                )
                                 :
-                                <Link className='button' to="/login">Login</Link>
+                                (
+                                    <Link className='button' to="/login">Login</Link>
+                                )
                         }
                     </ul>
                 </div>
